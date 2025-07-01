@@ -1,0 +1,30 @@
+# action.yml
+name: "Goodreads books list scraper"
+description: "Scrapes goodreads to get a given list of books from a given user and saves the json"
+author: "Marco Bacis"
+inputs:
+  user:
+    description: "Goodreads user id"
+    required: true
+  shelf:
+    description: "Goodreads shelf, in snake case"
+    required: true
+  output_path:
+    description: "Path to the output file to write"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      shell: bash
+
+    - name: Run script
+      run: python src/scrape_books.py ${{ inputs.user }} ${{ inputs.shelf }} ${{ inputs.output_path }}
+      shell: bash
