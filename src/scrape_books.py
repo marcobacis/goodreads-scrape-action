@@ -1,5 +1,6 @@
 import json
 import sys
+import os
 from datetime import datetime, date
 
 import goodreads
@@ -31,6 +32,8 @@ def normalized_json(content):
 user = sys.argv[1]
 shelf = sys.argv[2]
 output_path = sys.argv[3]
+
+output_path = os.path.join("/github/workspace", output_path)
 
 old_books = load_existing(output_path)
 books = goodreads.get_books(user, shelf)

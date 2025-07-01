@@ -20,7 +20,7 @@ jobs:
     steps:
       # checkout and do other stuff
 
-      - uses: marcobacis/goodreads-scrape-actions@v0.1.0
+      - uses: marcobacis/goodreads-scrape-action@v0.1.0
         with:
           user: "22830084"
           shelf: "currently-reading"
