@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src ./src
 
 # Set the entrypoint to your python script
-ENTRYPOINT ["python", "src/scrape_books.py"]
+ENTRYPOINT ["python", "/app/src/scrape_books.py"]
